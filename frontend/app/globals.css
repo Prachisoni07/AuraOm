@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --primary-color: 59, 130, 246;
+  --secondary-color: 147, 51, 234;
+  --background-start: 214, 219, 220;
+  --background-end: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start: 0, 0, 0;
+    --background-end: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: radial-gradient(
+    circle at top left,
+    rgba(var(--primary-color), 0.15),
+    transparent 40%
+  ),
+  radial-gradient(
+    circle at bottom right,
+    rgba(var(--secondary-color), 0.15),
+    transparent 40%
+  ),
+  linear-gradient(
+    135deg,
+    rgba(var(--primary-color), 0.1) 0%,
+    rgba(var(--secondary-color), 0.1) 100%
+  );
+  min-height: 100vh;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.message-bubble {
+  transition: all 0.3s ease;
+}
+
+.message-bubble:hover {
+  transform: translateY(-2px);
+}
+
+.typing-animation {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.typing-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: currentColor;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+.input-container {
+  position: relative;
+  background: linear-gradient(to right, rgba(var(--primary-color), 0.1), rgba(var(--secondary-color), 0.1));
+  padding: 2px;
+  border-radius: 0.75rem;
+}
+
+.input-container input {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0.65rem;
+  color: #1a1a1a;
+}
+
+.input-container input::placeholder {
+  color: #6b7280;
+  opacity: 0.8;
+}
+
+.emoji-picker-container {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+}
+
+.sticker-picker {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 200px;
+}
+
+.sticker-item {
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.sticker-item:hover {
+  transform: scale(1.1);
+  background: rgba(var(--primary-color), 0.1);
+}
+
+.attachment-preview {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.attachment-item {
+  position: relative;
+  padding: 4px 8px;
+  background: rgba(var(--primary-color), 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.remove-attachment {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.remove-attachment:hover {
+  opacity: 1;
+}
+
+.message-attachment {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.message-attachment img {
+  max-width: 150px;
+  border-radius: 8px;
+}
+
+.message-attachment a {
+  color: inherit;
+  text-decoration: underline;
+}
